@@ -3,15 +3,13 @@ package main
 import (
 	"fmt"
 	cache "inMemoryCache/inMemoryCache"
+	"time"
 )
 
 func main() {
 	c := cache.NewCache()
-	c.Set("age", 12)
-	c.Set("name", "wan")
-	fmt.Println(c.Get("age"))
-	fmt.Println(c.Get("name"))
-	c.Delete("name")
-	fmt.Println(c.Get("name"))
-	
+	c.SetWithTTL("kk", "jkew", time.Second * 2)
+	fmt.Println(c.Get("kk"))
+	time.Sleep(time.Second * 4)
+	fmt.Println(c.Get("kk"))
 }
