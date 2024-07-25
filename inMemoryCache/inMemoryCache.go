@@ -2,6 +2,8 @@ package cache
 
 import (
 	"errors"
+
+	"golang.org/x/exp/maps"
 )
 
 type Cache struct {
@@ -33,4 +35,8 @@ func (c *Cache) Delete(key string) error {
 	}
 	delete(c.data, key)
 	return nil
+}
+
+func (c *Cache) Clear() {
+	maps.Clear(c.data)
 }
